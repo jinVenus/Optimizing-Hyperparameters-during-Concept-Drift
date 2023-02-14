@@ -2,8 +2,7 @@
 from sklearn.neural_network import MLPClassifier
 import sys
 import timeit
-sys.path.append("/home/jin/")
-from Hiwi.src.algorithms.botorch_modes.mlp.dataloader import load_data
+from .src.algorithms.botorch_modes.mlp.dataloader import load_data
 
 
 # from dataloader import load_data
@@ -37,10 +36,5 @@ def mlp_model(hyper_vector, datanum):
     score_val = mlp.score(X_val, y_val)
     stop = timeit.default_timer()
     time = stop - start
-
-    # Results
-    # print('Training Time: ',stop - start)
-    # print("Training set score: %f" % mlp.score(X_train, y_train))
-    # print("Test set score: %f" % mlp.score(X_test, y_test))
 
     return time, score_val
