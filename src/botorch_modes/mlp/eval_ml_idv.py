@@ -8,7 +8,7 @@ import csv
 import time
 import sys
 import getopt
-from Hiwi.src.algorithms.botorch_modes.mlp.mlp_func_eval import mlp_model_test
+from .src.algorithms.botorch_modes.mlp.mlp_func_eval import mlp_model_test
 
 def main(argv):
     num_params = 5
@@ -30,8 +30,6 @@ def main(argv):
             print (
                 'call-ml-b.py -d <id of nodes> -i <string for all the given params, including weights> -o <csv file name> -s <training datasets>')
             sys.exit()
-        # elif opt in ("-d", "--nodes"):
-        #     machine_num = int(arg)
         elif opt in ("-i", "--hyperp"):
             hyper_parameters = str(arg)
         elif opt in ("-o", "--csvfname"):
