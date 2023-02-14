@@ -8,14 +8,13 @@ import time
 import getopt
 import pandas as pd
 
-sys.path.append("/home/jin/")
 from botorch.models import SingleTaskGP
 from gpytorch.mlls import ExactMarginalLogLikelihood
 
-from Hiwi.src.algorithms.botorch_modes.mlp.slide_training_win import slide
-from Hiwi.src.algorithms.Adjust_window_size_r import Aj_Win_r
-from Hiwi.src.algorithms.dynamic_dataloader_r import dynamic_generator_r
-from botorch.optim import optimize_acqf
+from .src.algorithms.botorch_modes.mlp.slide_training_win import slide
+from .src.algorithms.Adjust_window_size_r import Aj_Win_r
+from .src.algorithms.dynamic_dataloader_r import dynamic_generator_r
+from .optim import optimize_acqf
 
 import random
 
@@ -30,8 +29,7 @@ def call_external(X, num_trial, num_param, dataset):
     array_results = []
     hp = X.cpu().numpy()
     for i in range(0, num_trial):
-        # csv_file_name_2 = '/home/jin/Hiwi/data/' + folder_name + str(
-        #     dataset) + '_resluts' + '.csv'
+
         csv_file_name_2 = 'E:\\ML\\Hiwi\\data\\' + folder_name + str(
             dataset) + '_resluts' + '.csv'
 
@@ -46,9 +44,7 @@ def call_external(X, num_trial, num_param, dataset):
                 hp_param = hp_param + '_'
         print(hp_param)
 
-        # commands = 'ssh jin@ls12-epyc0 python3 /home/jin/Hiwi/src/algorithms/botorch_modes/mlp/call_ml_idv_r.py' + ' -i ' + str(
-        #     hp_param) + ' -o ' + str(csv_file_name_2) + ' -s ' + str(dataset) + ' &'
-        commands = 'python E:\\ML\\Hiwi\\src\\algorithms\\botorch_modes\\mlp\\call_ml_idv_r.py' + ' -i ' + str(
+        commands = 'python ..\\src\\botorch_modes\\mlp\\call_ml_idv_r.py' + ' -i ' + str(
             hp_param) + ' -o ' + str(csv_file_name_2) + ' -s ' + str(dataset) + ' &'
         os.system(commands)
         time.sleep(10)
@@ -249,10 +245,8 @@ def main(argv):
                     raw_samples=2048,
                 )
 
-                csv_file_name = '/home/jin/Hiwi/results/' + 'hp_gp_ei_mlp_dataset_' + str(
-                    dataset) + '_trail' + str(trial) + '_' + str(mode) + 's' + str(step) + '_' + str(win) + '.csv'
 
-                csv_file_name = 'E:\\ML\\Hiwi\\results\\' + 'hp_gp_ei_mlp_dataset_' + str(
+                csv_file_name = '..\\results\\' + 'hp_gp_ei_mlp_dataset_' + str(
                     dataset) + '_trail' + str(trial) + '_' + str(mode) + 's' + str(step) + '_' + str(win) + 'test.csv'
 
                 with open(csv_file_name, 'w') as csvFile:
