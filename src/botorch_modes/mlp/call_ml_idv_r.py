@@ -9,8 +9,7 @@ import time
 import sys
 import getopt
 
-sys.path.append("/home/jin/")
-from Hiwi.src.algorithms.botorch_modes.mlp.mlp_func import mlp_model
+from src.botorch_modes.mlp.mlp_func import mlp_model
 
 
 def main(argv):
