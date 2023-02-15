@@ -264,7 +264,7 @@ def main(argv):
 
                 # Change dataset(Concept Drift occurs)
                 if fault_rate <= 15:
-                    dynamic_generator_r(fault_rate)
+                    dynamic_generator_r(fault_rate, step)
                 else:
                     break
 
